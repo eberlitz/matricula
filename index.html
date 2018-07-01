@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Matricula</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+<body>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+
+	<script type="text/javascript">
+
+		// Obtem as ofertas
+		// var toArray1 = (nodes) => Array.prototype.slice.call(nodes, 0);
+		// var items1 = toArray1(document.querySelectorAll('.atividade'));
+		// items1 = items1.map((a) => {
+		// 	return ({
+		// 		id: parseInt(a.id, 10),
+		// 		desc: a.querySelector('.titleAtividade').textContent.trim(),
+		// 		turmas: toArray1(a.querySelectorAll('.linha')).map((b) => ({
+		// 			turma: b.querySelector('.turma').textContent.trim(),
+		// 			diaSemana: b.querySelector('.diaSemana').textContent.trim(),
+		// 			horario: b.querySelector('.horario').textContent.trim(),
+		// 			modalidade: b.querySelector('.modalidade').textContent.trim(),
+		// 		})).filter(function (b) {
+		// 			return b.turma !== "Turma";
+		// 		})
+		// 	});
+		// });
+		// copy(JSON.stringify(items1));
+
+		// Obtem nao realizadas do historico
+		// var toArray1 = (nodes) => Array.prototype.slice.call(nodes, 0);
+		// var items1 = toArray1(document.querySelectorAll('.EduGridMain tr'));
+		// items1 = items1.map((a) => {
+		// 	let [id, desc, situacao] = toArray1(a.querySelectorAll('td'))
+		// 		.filter((b) => b.parentNode === a)
+		// 		.map((b) => b.textContent.trim());
+		// 	return { id, desc, situacao };
+		// }).filter(({ id, desc, situacao }) => id && desc && !situacao && id !== "Resumo")
+		// 	.map(({ id, desc, situacao }) => ({
+		// 		sem: 10,
+		// 		done: !!situacao,
+		// 		id: parseInt(id, 10),
+		// 		desc,
+		// 		prereq: [],
+		// 		coreq: []
+		// 	}));
+		// copy(JSON.stringify(items1));
+
+
+
+		var data = {
+			"curriculo": [
+				{ "sem": 1, "done": true, "id": 60551, "desc": "Lógica", "prereq": [], "coreq": [] },
+				{ "sem": 1, "done": true, "id": 60018, "desc": "Programação I", "prereq": [], "coreq": [60544] },
+				{ "sem": 1, "done": true, "id": 60544, "desc": "Laboratório I", "prereq": [], "coreq": [60018] },
+				{ "sem": 1, "done": true, "id": 60572, "desc": "Introdução à Profissão em Tecnologia da Informação", "prereq": [], "coreq": [] },
+				{ "sem": 1, "done": true, "id": 60040, "desc": "Matemática para Computação", "prereq": [], "coreq": [60551] },
+
+				{ "sem": 2, "done": true, "id": 60020, "desc": "Programação II", "prereq": [60018, 60544], "coreq": [60545] },
+				{ "sem": 2, "done": true, "id": 60545, "desc": "Laboratório II", "prereq": [60018, 60544], "coreq": [60020] },
+				{ "sem": 2, "done": true, "id": 97949, "desc": "Álgebra Vetorial e Matricial", "prereq": [], "coreq": [] },
+				{ "sem": 2, "done": true, "id": 93898, "desc": "Probabilidade", "prereq": [], "coreq": [] },
+				{ "sem": 2, "done": true, "id": 93886, "desc": "Arquitetura e Organização de Computadores I", "prereq": [], "coreq": [60551] },
+
+				{ "sem": 3, "done": true, "id": 60535, "desc": "Estruturas Avançadas de Dados I", "prereq": [60040, 60020, 60545], "coreq": [] },
+				{ "sem": 3, "done": true, "id": 60550, "desc": "Complexidade de Algoritmos", "prereq": [], "coreq": [60535] },
+				{ "sem": 3, "done": true, "id": 93925, "desc": "Sistemas Operacionais", "prereq": [93886, 60020, 60545], "coreq": [60535] },
+				{ "sem": 3, "done": true, "id": 93917, "desc": "Laboratório de Sistemas Operacionais", "prereq": [], "coreq": [93925] },
+				{ "sem": 3, "done": true, "id": 97952, "desc": "Cálculo I: Estudo da Derivada", "prereq": [60551, 60040], "coreq": [] },
+				{ "sem": 3, "done": true, "id": 60541, "desc": "Engenharia de Requisitos", "prereq": [60551, 60020, 60545], "coreq": [] },
+
+				{ "sem": 4, "done": true, "id": 60023, "desc": "Paradigmas de Programação", "prereq": [60551, 60040, 60020, 60545], "coreq": [] },
+				{ "sem": 4, "done": true, "id": 65103, "desc": "Linguagens Formais", "prereq": [60040, 60020, 60545], "coreq": [] },
+				{ "sem": 4, "done": true, "id": 97953, "desc": "Cálculo II: Estudo da Integral", "prereq": [97952], "coreq": [] },
+				{ "sem": 4, "done": true, "id": 93918, "desc": "Redes de Computadores I", "prereq": [93925], "coreq": [] },
+				{ "sem": 4, "done": true, "id": 60375, "desc": "Processamento Gráfico", "prereq": [97949, 60020, 60545], "coreq": [] },
+				{ "sem": 4, "done": true, "id": 60030, "desc": "Banco de Dados I", "prereq": [60535], "coreq": [] },
+
+				{ "sem": 5, "done": true, "id": 60536, "desc": "Estruturas Avançadas de Dados II", "prereq": [60535], "coreq": [] },
+				{ "sem": 5, "done": true, "id": 93926, "desc": "Tradutores", "prereq": [65103], "coreq": [] },
+				{ "sem": 5, "done": true, "id": 60031, "desc": "Teoria da Computação", "prereq": [65103], "coreq": [] },
+				{ "sem": 5, "done": true, "id": 10339, "desc": "Ética e Tecnologia", "prereq": [], "coreq": [] },
+				{ "sem": 5, "done": true, "id": 60537, "desc": "Desenvolvimento de Software I", "prereq": [60541], "coreq": [] },
+				{ "sem": 5, "done": true, "id": 60549, "desc": "Inteligência Artificial", "prereq": [60551, 60023, 93898], "coreq": [60536] },
+
+				{ "sem": 6, "done": true, "id": 60538, "desc": "Desenvolvimento de Software II", "prereq": [60537, 60030], "coreq": [] },
+				{ "sem": 6, "done": true, "id": 93919, "desc": "Redes de Computadores II", "prereq": [93918], "coreq": [] },
+				{ "sem": 6, "done": true, "id": 60046, "desc": "Teoria da Informação", "prereq": [60020, 60545, 93898], "coreq": [] },
+				{ "sem": 6, "done": true, "id": 93888, "desc": "Arquitetura e Organização de Computadores II", "prereq": [60018, 60544, 93886], "coreq": [] },
+				{ "sem": 6, "done": true, "id": 60033, "desc": "Banco de Dados II", "prereq": [60030], "coreq": [] },
+
+				{ "sem": 7, "done": true, "id": 93923, "desc": "Sistemas Distribuídos", "prereq": [93918], "coreq": [] },
+				{ "sem": 7, "done": false, "id": 10341, "desc": "Antropologia Filosófica e Tecnociência", "prereq": [], "coreq": [] },
+				{ "sem": 7, "done": true, "id": 93903, "desc": "Elaboração de Projetos", "prereq": [], "coreq": [] },
+				{ "sem": 7, "done": true, "id": 60359, "desc": "Desenvolvimento de Software III", "prereq": [60538], "coreq": [] },
+				{ "sem": 7, "done": true, "id": 60047, "desc": "Projeto de Interfaces", "prereq": [60541], "coreq": [] },
+				{ "sem": 7, "done": true, "id": 60381, "desc": "Computação Gráfica", "prereq": [60375], "coreq": [] },
+
+				{ "sem": 8, "done": true, "id": 60570, "desc": "Trabalho de Conclusão I", "prereq": [93903], "coreq": [] },
+				{ "sem": 8, "done": true, "id": 93927, "desc": "Processamento de Alto Desempenho", "prereq": [60023], "coreq": [] },
+				{ "sem": 8, "done": true, "id": 65072, "desc": "Simulação e Modelagem de Sistemas", "prereq": [60020, 60545, 93898], "coreq": [] },
+
+				{ "sem": 9, "done": false, "id": 60571, "desc": "Trabalho de Conclusão II", "prereq": [], "coreq": [60570] },
+
+				{ "sem": 10, "done": false, "id": 010340, "desc": "América Latina e Sustentabilidade Socioambiental", "prereq": [], "coreq": [] },
+				{ "sem": 10, "done": false, "id": 010356, "desc": "Afrodescendentes na América Latina", "prereq": [], "coreq": [] },
+				{ "sem": 10, "done": false, "id": 010357, "desc": "Povos Indígenas na América Latina Contemporânea", "prereq": [], "coreq": [] },
+
+				{ "sem": 10, "id": 1, "done": false, "desc": "Livre Escolha", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 247, "done": false, "desc": "Optativa de Formação Específica 1", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 248, "done": false, "desc": "Optativa de Formação Específica 2", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 249, "done": false, "desc": "Optativa de Formação Específica 3", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 250, "done": false, "desc": "Optativa de Formação Específica 4", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 251, "done": false, "desc": "Optativa de Formação Específica 5", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 252, "done": false, "desc": "Optativa de Formação Específica 6", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 253, "done": false, "desc": "Optativa de Formação Específica 7", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 254, "done": false, "desc": "Optativa de Formação Específica 8", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 255, "done": false, "desc": "Optativa de Formação Específica 9", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 256, "done": false, "desc": "Optativa de Formação Específica 10", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 257, "done": false, "desc": "Optativa de Formação Geral 1", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 258, "done": false, "desc": "Optativa de Formação Geral 2", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 259, "done": false, "desc": "Optativa de Formação Geral 3", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 260, "done": false, "desc": "Optativa de Formação Geral 4", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 10530, "done": false, "desc": "Inclusão e Acessibilidade em Contextos Profissionais", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 30318, "done": false, "desc": "Inglês Técnico para Computação", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 30973, "done": false, "desc": "Cidadania Social e Soluções Criativas", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 40093, "done": false, "desc": "Direito e a Tecnologia da Informação", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 50430, "done": false, "desc": "Empreendedorismo e Inovação: conceitos e práticas", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 50431, "done": false, "desc": "Empreender e Inovar em Organizações", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 50432, "done": false, "desc": "Gestão para Empreender e Inovar", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60032, "done": false, "desc": "Compiladores", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60208, "done": false, "desc": "Física - Eletromagnetismo", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60246, "done": false, "desc": "Tópicos Especiais em Informática I", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60249, "done": false, "desc": "Tópicos Especiais em Informática IV", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60250, "done": false, "desc": "Tópicos Especiais em Informática V", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60251, "done": false, "desc": "Tópicos Especiais em Informática VI", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60382, "done": false, "desc": "Realidade Virtual", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60388, "done": false, "desc": "Animação Computadorizada", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60394, "done": false, "desc": "Técnicas Avançadas de Computação Gráfica", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60401, "done": false, "desc": "Técnicas de Otimização", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60407, "done": false, "desc": "Especificação Formal", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60409, "done": false, "desc": "Modelos de Melhoria de Processos de Software", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60411, "done": false, "desc": "Processos de Teste de Software", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60413, "done": false, "desc": "Gerenciamento Quantitativo de Projetos", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60417, "done": false, "desc": "Gerência da Configuração de Software", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60418, "done": false, "desc": "Avaliação de Processos de Software", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60523, "done": false, "desc": "Processo de Software", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60525, "done": false, "desc": "Gerência de Projetos de Software", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60526, "done": false, "desc": "Marketing e Tecnologia da Informação", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60528, "done": false, "desc": "Arquitetura de Software", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60555, "done": false, "desc": "Tópicos Especiais II - Padrões de Projeto de Software", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60556, "done": false, "desc": "Tópicos Especiais em Informática III - Programação de Dispos", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60575, "done": false, "desc": "Fundamentos de Segurança da Informação", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60576, "done": false, "desc": "Gestão da Segurança da Informação I", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60580, "done": false, "desc": "Segurança de Aplicações", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60658, "done": false, "desc": "Cálculo III: Estudo das Séries", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60659, "done": false, "desc": "Tópicos Especiais – Segurança em Dispositivos Móveis", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 60660, "done": false, "desc": "Tópicos Especiais – Metaheuristicas", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 65068, "done": false, "desc": "Linguagens de Programação", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 79010, "done": false, "desc": "Eletrônica Digital I", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 92177, "done": false, "desc": "Fundamentos do Processo Administrativo", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 92182, "done": false, "desc": "Gestão por Processos", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 92917, "done": false, "desc": "Relações Interpessoais", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93885, "done": false, "desc": "Agentes e Sistemas Multiagentes", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93891, "done": false, "desc": "Computação Móvel e Ubíqua", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93895, "done": false, "desc": "Pesquisa Operacional", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93902, "done": false, "desc": "Desenvolvimento para a Web", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93905, "done": false, "desc": "Gestão da Informação e do Conhecimento", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93907, "done": false, "desc": "Sistemas de Recomendação", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93908, "done": false, "desc": "Gestão da Tecnologia da Informação", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93910, "done": false, "desc": "Gestão de Sistemas de Informação", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93911, "done": false, "desc": "Visão Sistêmica e Estratégia Organizacional", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93916, "done": false, "desc": "Gerência de Redes", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93929, "done": false, "desc": "Processamento de Imagens e Visão Computacional", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93932, "done": false, "desc": "Projeto de Sistemas Operacionais", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 93933, "done": false, "desc": "Redes Avançadas", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 95235, "done": false, "desc": "Métricas de Processos de Software", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 95245, "done": false, "desc": "Gestão da Inovação", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 97959, "done": false, "desc": "Física: Mecânica A", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 98278, "done": false, "desc": "Introdução à Língua Brasileira de Sinais (LIBRAS)", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 100787, "done": false, "desc": "Eletrônica Digital II", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 100837, "done": false, "desc": "Circuitos Microprocessados I", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 100840, "done": false, "desc": "Circuitos Microprocessados II", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 10340, "done": false, "desc": "América Latina e Sustentabilidade Socioambiental", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 10356, "done": false, "desc": "Afrodescendentes na América Latina", "prereq": [], "coreq": [] },
+				{ "sem": 10, "id": 10357, "done": false, "desc": "Povos Indígenas na América Latina Contemporânea", "prereq": [], "coreq": [] }
+
+
+			],
+
+			"ofertas": [{ "id": 60018, "desc": "060018 - Programação I", "turmas": [{ "turma": "GR16030-00038", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16030-00108", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60544, "desc": "060544 - Laboratório I", "turmas": [{ "turma": "GR16030-00055", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16030-00023", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16030-00024", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16030-00061", "diaSemana": "Sábado", "horario": "08:30 às 11:23", "modalidade": "Presencial" }] }, { "id": 60551, "desc": "060551 - Lógica", "turmas": [{ "turma": "GR16031-00093", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16031-00070", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60572, "desc": "060572 - Introdução à Profissão em Tecnologia da Informação", "turmas": [{ "turma": "GR16031-00009", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60662, "desc": "060662 - Matemática para Computação", "turmas": [{ "turma": "GR16030-00101", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16030-00113", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60020, "desc": "060020 - Programação II", "turmas": [{ "turma": "GR16030-00040", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16030-00056", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60545, "desc": "060545 - Laboratório II", "turmas": [{ "turma": "GR16030-00025", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16030-00026", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16030-00027", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 93886, "desc": "093886 - Arquitetura e Organização de Computadores I", "turmas": [{ "turma": "GR16031-00044", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16031-00026", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 97949, "desc": "097949 - Álgebra Vetorial e Matricial", "turmas": [{ "turma": "GR10006-00004", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00006", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00008", "diaSemana": "Terça", "horario": "08:30 às 11:23", "modalidade": "Presencial" }, { "turma": "GR10006-00010", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00012", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00016", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00020", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00021", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00025", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 99274, "desc": "099274 - Probabilidade e Inferência Estatística", "turmas": [{ "turma": "GR16009-00067", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16009-00068", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60535, "desc": "060535 - Estruturas Avançadas de Dados I", "turmas": [{ "turma": "GR16030-00059", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60541, "desc": "060541 - Engenharia de Requisitos", "turmas": [{ "turma": "GR16032-00025", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16032-00026", "diaSemana": "SextaSextaSextaSextaSexta", "horario": "19:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:23", "modalidade": "EaDPresencialPresencialPresencialPresencial" }] }, { "id": 60550, "desc": "060550 - Complexidade de Algoritmos", "turmas": [{ "turma": "GR16031-00113", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 93917, "desc": "093917 - Laboratório de Sistemas Operacionais", "turmas": [{ "turma": "GR16031-00011", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 93925, "desc": "093925 - Sistemas Operacionais", "turmas": [{ "turma": "GR16031-00018", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 97952, "desc": "097952 - Cálculo I: Estudo da Derivada", "turmas": [{ "turma": "GR10006-00035", "diaSemana": "Segunda", "horario": "08:30 às 11:23", "modalidade": "Presencial" }, { "turma": "GR10006-00037", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00038", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00043", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00045", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00048", "diaSemana": "Quarta", "horario": "14:00 às 16:53", "modalidade": "Presencial" }, { "turma": "GR10006-00049", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00050", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00051", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00059", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60030, "desc": "060030 - Banco de Dados I", "turmas": [{ "turma": "GR16031-00024", "diaSemana": "SegundaSegundaSegundaSegunda", "horario": "17:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:49", "modalidade": "EaDPresencialPresencialPresencial" }, { "turma": "GR16031-00002", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60375, "desc": "060375 - Processamento Gráfico", "turmas": [{ "turma": "GR16031-00100", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16034-00059", "diaSemana": "Quinta", "horario": "08:30 às 11:23", "modalidade": "Presencial" }] }, { "id": 65103, "desc": "065103 - Linguagens Formais", "turmas": [{ "turma": "GR16031-00114", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 93918, "desc": "093918 - Redes de Computadores I", "turmas": [{ "turma": "GR16031-00017", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 97953, "desc": "097953 - Cálculo II: Estudo da Integral", "turmas": [{ "turma": "GR10006-00064", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00065", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00067", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00069", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00071", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00074", "diaSemana": "Quinta", "horario": "08:30 às 11:23", "modalidade": "Presencial" }, { "turma": "GR10006-00075", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00180", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00077", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60023, "desc": "060023 - Paradigmas de Programação (sem oferta)", "turmas": [] }, { "id": 10339, "desc": "010339 - Ética e Tecnologia", "turmas": [{ "turma": "GR10001-00067", "diaSemana": "SegundaSegundaSegundaSegundaSegunda", "horario": "17:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:49", "modalidade": "EaDPresencialPresencialPresencialPresencial" }, { "turma": "GR10001-00066", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10001-00070", "diaSemana": "SábadoSabadoSabadoSabadoSabado", "horario": "08:30 às 11:2308:30 às 11:2308:30 às 11:2308:30 às 11:2308:30 às 11:23", "modalidade": "EaDPresencialPresencialPresencialPresencial" }] }, { "id": 60536, "desc": "060536 - Estruturas Avançadas de Dados II", "turmas": [{ "turma": "GR16030-00011", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60537, "desc": "060537 - Desenvolvimento de Software I", "turmas": [{ "turma": "GR16030-00002", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16030-00122", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 93926, "desc": "093926 - Tradutores", "turmas": [{ "turma": "GR16031-00089", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60031, "desc": "060031 - Teoria da Computação (sem oferta)", "turmas": [] }, { "id": 60549, "desc": "060549 - Inteligência Artificial (sem oferta)", "turmas": [] }, { "id": 60033, "desc": "060033 - Banco de Dados II", "turmas": [{ "turma": "GR16031-00073", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60046, "desc": "060046 - Teoria da Informação", "turmas": [{ "turma": "GR16031-00116", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60538, "desc": "060538 - Desenvolvimento de Software II", "turmas": [{ "turma": "GR16030-00004", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16030-00089", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 93888, "desc": "093888 - Arquitetura e Organização de Computadores II", "turmas": [{ "turma": "GR16031-00097", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 1, "desc": "000001 - Livre Escolha", "turmas": [] }, { "id": 93919, "desc": "093919 - Redes de Computadores II (sem oferta)", "turmas": [] }, { "id": 10341, "desc": "010341 - Antropologia Filosófica e Tecnociência", "turmas": [{ "turma": "GR10001-00087", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10001-00244", "diaSemana": "TerçaTercaTercaTercaTerca", "horario": "17:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:49", "modalidade": "EaDPresencialPresencialPresencialPresencial" }, { "turma": "GR10001-00084", "diaSemana": "QuartaQuartaQuartaQuartaQuarta", "horario": "17:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:49", "modalidade": "EaDPresencialPresencialPresencialPresencial" }, { "turma": "GR10001-00085", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10001-00078", "diaSemana": "Sexta", "horario": "08:30 às 11:23", "modalidade": "Presencial" }, { "turma": "GR10001-00080", "diaSemana": "SextaSextaSextaSextaSexta", "horario": "19:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:23", "modalidade": "EaDPresencialPresencialPresencialPresencial" }] }, { "id": 60047, "desc": "060047 - Projeto de Interfaces", "turmas": [{ "turma": "GR16030-00136", "diaSemana": "SextaSextaSextaSexta", "horario": "19:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:23", "modalidade": "EaDPresencialPresencialPresencial" }] }, { "id": 60381, "desc": "060381 - Computação Gráfica", "turmas": [{ "turma": "GR16031-00101", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16034-00134", "diaSemana": "Sexta", "horario": "08:30 às 11:23", "modalidade": "Presencial" }] }, { "id": 60539, "desc": "060539 - Desenvolvimento de Software III", "turmas": [{ "turma": "GR16030-00006", "diaSemana": "QuartaQuartaQuartaQuartaQuarta", "horario": "17:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:49", "modalidade": "EaDPresencialPresencialPresencialPresencial" }] }, { "id": 93903, "desc": "093903 - Elaboração de Projetos", "turmas": [{ "turma": "GR16030-00007", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 93923, "desc": "093923 - Sistemas Distribuídos", "turmas": [{ "turma": "GR16031-00115", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60570, "desc": "060570 - Trabalho de Conclusão I", "turmas": [{ "turma": "GR16031-00027", "diaSemana": "--", "horario": "--", "modalidade": "Presencial" }] }, { "id": 65072, "desc": "065072 - Simulação e Modelagem de Sistemas (sem oferta)", "turmas": [] }, { "id": 93927, "desc": "093927 - Processamento de Alto Desempenho (sem oferta)", "turmas": [] }, { "id": 60571, "desc": "060571 - Trabalho de Conclusão II", "turmas": [{ "turma": "GR16031-00028", "diaSemana": "--", "horario": "--", "modalidade": "Presencial" }] }, { "id": 10530, "desc": "010530 - Inclusão e Acessibilidade em Contextos Profissionais", "turmas": [{ "turma": "GR10001-00278", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 30318, "desc": "030318 - Inglês Técnico para Computação", "turmas": [{ "turma": "GR10004-00006", "diaSemana": "Sábado", "horario": "08:30 às 11:23", "modalidade": "Presencial" }] }, { "id": 30973, "desc": "030973 - Cidadania Social e Soluções Criativas", "turmas": [{ "turma": "GR10002-00187", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 40093, "desc": "040093 - Direito e a Tecnologia da Informação", "turmas": [{ "turma": "GR10004-00037", "diaSemana": "SextaSextaSextaSextaSexta", "horario": "17:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:49", "modalidade": "EaDPresencialPresencialPresencialPresencial" }] }, { "id": 50430, "desc": "050430 - Empreendedorismo e Inovação: conceitos e práticas", "turmas": [{ "turma": "GR15001-00114", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR15001-00116", "diaSemana": "TerçaTercaTercaTercaTerca", "horario": "17:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:49", "modalidade": "EaDPresencialPresencialPresencialPresencial" }, { "turma": "GR15001-00743", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR15001-00112", "diaSemana": "Quarta", "horario": "08:30 às 11:23", "modalidade": "Presencial" }, { "turma": "GR15001-00111", "diaSemana": "QuintaQuintaQuintaQuintaQuinta", "horario": "19:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:23", "modalidade": "EaDPresencialPresencialPresencialPresencial" }, { "turma": "GR15001-00115", "diaSemana": "SextaSextaSextaSextaSexta", "horario": "19:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:23", "modalidade": "EaDPresencialPresencialPresencialPresencial" }, { "turma": "GR15001-00113", "diaSemana": "SábadoSabadoSabadoSabadoSabado", "horario": "08:30 às 11:2308:30 às 11:2308:30 às 11:2308:30 às 11:2308:30 às 11:23", "modalidade": "EaDPresencialPresencialPresencialPresencial" }] }, { "id": 50431, "desc": "050431 - Empreender e Inovar em Organizações", "turmas": [{ "turma": "GR15001-00313", "diaSemana": "SegundaSegundaSegundaSegunda", "horario": "08:30 às 11:2308:30 às 11:2308:30 às 11:2308:30 às 11:23", "modalidade": "EaDPresencialPresencialPresencial" }, { "turma": "GR15001-00119", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR15001-00681", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR15001-00121", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR15001-00120", "diaSemana": "QuintaQuintaQuintaQuinta", "horario": "17:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:49", "modalidade": "EaDPresencialPresencialPresencial" }, { "turma": "GR15001-00123", "diaSemana": "SextaSextaSextaSextaSexta", "horario": "19:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:23", "modalidade": "EaDPresencialPresencialPresencialPresencial" }, { "turma": "GR15001-00512", "diaSemana": "SextaSextaSextaSextaSexta", "horario": "19:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:23", "modalidade": "EaDPresencialPresencialPresencialPresencial" }] }, { "id": 50432, "desc": "050432 - Gestão para Empreender e Inovar", "turmas": [{ "turma": "GR15001-00588", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60208, "desc": "060208 - Física - Eletromagnetismo", "turmas": [{ "turma": "GR16038-00121", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16038-00120", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60251, "desc": "060251 - Tópicos Especiais em Informática VI", "turmas": [{ "turma": "GR16030-00138", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60382, "desc": "060382 - Realidade Virtual", "turmas": [{ "turma": "GR16034-00249", "diaSemana": "Terça", "horario": "08:30 às 11:23", "modalidade": "Presencial" }] }, { "id": 60388, "desc": "060388 - Animação Computadorizada", "turmas": [{ "turma": "GR16034-00286", "diaSemana": "Quarta", "horario": "08:30 às 11:23", "modalidade": "Presencial" }] }, { "id": 60394, "desc": "060394 - Técnicas Avançadas de Computação Gráfica", "turmas": [{ "turma": "GR16034-00252", "diaSemana": "Quinta", "horario": "08:30 às 11:23", "modalidade": "Presencial" }] }, { "id": 60401, "desc": "060401 - Técnicas de Otimização", "turmas": [{ "turma": "GR16034-00254", "diaSemana": "Terça", "horario": "08:30 às 11:23", "modalidade": "Presencial" }] }, { "id": 60409, "desc": "060409 - Modelos de Melhoria de Processos de Software", "turmas": [{ "turma": "GR16032-00018", "diaSemana": "TerçaQuinta", "horario": "19:30 às 22:2319:30 às 22:23", "modalidade": "PresencialPresencial" }] }, { "id": 60411, "desc": "060411 - Processos de Teste de Software", "turmas": [{ "turma": "GR16032-00030", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60413, "desc": "060413 - Gerenciamento Quantitativo de Projetos", "turmas": [{ "turma": "GR16032-00085", "diaSemana": "Sexta", "horario": "19:25 às 22:23", "modalidade": "Presencial" }] }, { "id": 60417, "desc": "060417 - Gerência da Configuração de Software", "turmas": [{ "turma": "GR16032-00027", "diaSemana": "Quarta", "horario": "19:30 às 22:15", "modalidade": "Presencial" }] }, { "id": 60523, "desc": "060523 - Processo de Software", "turmas": [{ "turma": "GR16032-00020", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60525, "desc": "060525 - Gerência de Projetos de Software", "turmas": [{ "turma": "GR16032-00110", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60526, "desc": "060526 - Marketing e Tecnologia da Informação", "turmas": [{ "turma": "GR16032-00015", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60528, "desc": "060528 - Arquitetura de Software", "turmas": [{ "turma": "GR16032-00008", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60575, "desc": "060575 - Fundamentos de Segurança da Informação", "turmas": [{ "turma": "GR16033-00070", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60576, "desc": "060576 - Gestão da Segurança da Informação I", "turmas": [{ "turma": "GR16033-00071", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 60658, "desc": "060658 - Cálculo III: Estudo das Séries", "turmas": [{ "turma": "GR10006-00264", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00261", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 79010, "desc": "079010 - Eletrônica Digital I", "turmas": [{ "turma": "GR16038-00386", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16038-00381", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16038-00384", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 92177, "desc": "092177 - Fundamentos do Processo Administrativo", "turmas": [{ "turma": "GR15001-00279", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR15001-00147", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 92182, "desc": "092182 - Gestão por Processos", "turmas": [{ "turma": "GR15001-00202", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR15001-00206", "diaSemana": "SextaSextaSextaSexta", "horario": "19:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:23", "modalidade": "EaDPresencialPresencialPresencial" }] }, { "id": 92917, "desc": "092917 - Relações Interpessoais", "turmas": [{ "turma": "GR16032-00047", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 93885, "desc": "093885 - Agentes e Sistemas Multiagentes", "turmas": [{ "turma": "GR16031-00112", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 93895, "desc": "093895 - Pesquisa Operacional", "turmas": [{ "turma": "GR16030-00033", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 93905, "desc": "093905 - Gestão da Informação e do Conhecimento", "turmas": [{ "turma": "GR16030-00135", "diaSemana": "QuartaQuartaQuartaQuartaQuarta", "horario": "19:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:2319:30 às 22:23", "modalidade": "EaDPresencialPresencialPresencialPresencial" }] }, { "id": 93908, "desc": "093908 - Gestão da Tecnologia da Informação", "turmas": [{ "turma": "GR16030-00126", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 93910, "desc": "093910 - Gestão de Sistemas de Informação", "turmas": [{ "turma": "GR16030-00134", "diaSemana": "QuartaQuartaQuartaQuartaQuarta", "horario": "14:00 às 16:5314:00 às 16:5314:00 às 16:5314:00 às 16:5314:00 às 16:53", "modalidade": "EaDPresencialPresencialPresencialPresencial" }] }, { "id": 93911, "desc": "093911 - Visão Sistêmica e Estratégia Organizacional", "turmas": [{ "turma": "GR16030-00129", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 95235, "desc": "095235 - Métricas de Processos de Software", "turmas": [{ "turma": "GR16032-00095", "diaSemana": "Sexta", "horario": "19:30 às 22:15", "modalidade": "Presencial" }] }, { "id": 97959, "desc": "097959 - Física: Mecânica A", "turmas": [{ "turma": "GR10006-00110", "diaSemana": "Segunda", "horario": "08:30 às 11:23", "modalidade": "Presencial" }, { "turma": "GR10006-00111", "diaSemana": "Segunda", "horario": "14:00 às 16:53", "modalidade": "Presencial" }, { "turma": "GR10006-00112", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00116", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00113", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00115", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00118", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00333", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00120", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00121", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10006-00123", "diaSemana": "Sexta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 98278, "desc": "098278 - Introdução à Língua Brasileira de Sinais (LIBRAS)", "turmas": [{ "turma": "GR10003-00090", "diaSemana": "Terça", "horario": "19:30 às 22:15", "modalidade": "Presencial" }] }, { "id": 100787, "desc": "100787 - Eletrônica Digital II", "turmas": [{ "turma": "GR16038-00395", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16038-00393", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 100837, "desc": "100837 - Circuitos Microprocessados I", "turmas": [{ "turma": "GR16038-00382", "diaSemana": "SegundaQuarta", "horario": "17:30 às 18:4917:30 às 18:49", "modalidade": "PresencialPresencial" }, { "turma": "GR16038-00383", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }, { "id": 100840, "desc": "100840 - Circuitos Microprocessados II", "turmas": [{ "turma": "GR16038-00373", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR16038-00375", "diaSemana": "TerçaQuinta", "horario": "17:30 às 18:4917:30 às 18:49", "modalidade": "PresencialPresencial" }] }, { "id": 247, "desc": "000247 - Optativa de Formação Específica 1 (sem oferta)", "turmas": [] }, { "id": 248, "desc": "000248 - Optativa de Formação Específica 2 (sem oferta)", "turmas": [] }, { "id": 249, "desc": "000249 - Optativa de Formação Específica 3 (sem oferta)", "turmas": [] }, { "id": 250, "desc": "000250 - Optativa de Formação Específica 4 (sem oferta)", "turmas": [] }, { "id": 251, "desc": "000251 - Optativa de Formação Específica 5 (sem oferta)", "turmas": [] }, { "id": 252, "desc": "000252 - Optativa de Formação Específica 6 (sem oferta)", "turmas": [] }, { "id": 253, "desc": "000253 - Optativa de Formação Específica 7 (sem oferta)", "turmas": [] }, { "id": 254, "desc": "000254 - Optativa de Formação Específica 8 (sem oferta)", "turmas": [] }, { "id": 255, "desc": "000255 - Optativa de Formação Específica 9 (sem oferta)", "turmas": [] }, { "id": 256, "desc": "000256 - Optativa de Formação Específica 10 (sem oferta)", "turmas": [] }, { "id": 257, "desc": "000257 - Optativa de Formação Geral 1 (sem oferta)", "turmas": [] }, { "id": 258, "desc": "000258 - Optativa de Formação Geral 2 (sem oferta)", "turmas": [] }, { "id": 259, "desc": "000259 - Optativa de Formação Geral 3 (sem oferta)", "turmas": [] }, { "id": 260, "desc": "000260 - Optativa de Formação Geral 4 (sem oferta)", "turmas": [] }, { "id": 60032, "desc": "060032 - Compiladores (sem oferta)", "turmas": [] }, { "id": 60246, "desc": "060246 - Tópicos Especiais em Informática I (sem oferta)", "turmas": [] }, { "id": 60249, "desc": "060249 - Tópicos Especiais em Informática IV (sem oferta)", "turmas": [] }, { "id": 60250, "desc": "060250 - Tópicos Especiais em Informática V (sem oferta)", "turmas": [] }, { "id": 60407, "desc": "060407 - Especificação Formal (sem oferta)", "turmas": [] }, { "id": 60418, "desc": "060418 - Avaliação de Processos de Software (sem oferta)", "turmas": [] }, { "id": 60555, "desc": "060555 - Tópicos Especiais II - Padrões de Projeto de Software (sem oferta)", "turmas": [] }, { "id": 60556, "desc": "060556 - Tópicos Especiais em Informática III - Programação de Dispos (sem oferta)", "turmas": [] }, { "id": 60580, "desc": "060580 - Segurança de Aplicações (sem oferta)", "turmas": [] }, { "id": 60642, "desc": "060642 - Ubiquitous and Mobile Computing (sem oferta)", "turmas": [] }, { "id": 60659, "desc": "060659 - Tópicos Especiais - Segurança em Dispositivos Móveis (sem oferta)", "turmas": [] }, { "id": 60660, "desc": "060660 - Tópicos Especiais - Metaheuristicas (sem oferta)", "turmas": [] }, { "id": 65068, "desc": "065068 - Linguagens de Programação (sem oferta)", "turmas": [] }, { "id": 93889, "desc": "093889 - Mineração de Dados e Aprendizado de Máquina (sem oferta)", "turmas": [] }, { "id": 93891, "desc": "093891 - Computação Móvel e Ubíqua (sem oferta)", "turmas": [] }, { "id": 93902, "desc": "093902 - Desenvolvimento para a Web (sem oferta)", "turmas": [] }, { "id": 93907, "desc": "093907 - Sistemas de Recomendação (sem oferta)", "turmas": [] }, { "id": 93916, "desc": "093916 - Gerência de Redes (sem oferta)", "turmas": [] }, { "id": 93929, "desc": "093929 - Processamento de Imagens e Visão Computacional (sem oferta)", "turmas": [] }, { "id": 93932, "desc": "093932 - Projeto de Sistemas Operacionais (sem oferta)", "turmas": [] }, { "id": 93933, "desc": "093933 - Redes Avançadas (sem oferta)", "turmas": [] }, { "id": 95245, "desc": "095245 - Gestão da Inovação (sem oferta)", "turmas": [] }, { "id": 10340, "desc": "010340 - América Latina e Sustentabilidade Socioambiental", "turmas": [{ "turma": "GR10001-00077", "diaSemana": "SegundaSegundaSegundaSegundaSegunda", "horario": "08:30 às 11:2308:30 às 11:2308:30 às 11:2308:30 às 11:2308:30 às 11:23", "modalidade": "EaDPresencialPresencialPresencialPresencial" }, { "turma": "GR10001-00071", "diaSemana": "Segunda", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10001-00072", "diaSemana": "QuartaQuartaQuartaQuartaQuarta", "horario": "17:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:49", "modalidade": "EaDPresencialPresencialPresencialPresencial" }, { "turma": "GR10001-00074", "diaSemana": "QuintaQuintaQuintaQuintaQuinta", "horario": "17:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:4917:30 às 18:49", "modalidade": "EaDPresencialPresencialPresencialPresencial" }, { "turma": "GR10001-00231", "diaSemana": "Quinta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10001-00076", "diaSemana": "SábadoSabadoSabadoSabadoSabado", "horario": "08:30 às 11:2308:30 às 11:2308:30 às 11:2308:30 às 11:2308:30 às 11:23", "modalidade": "EaDPresencialPresencialPresencialPresencial" }] }, { "id": 10356, "desc": "010356 - Afrodescendentes na América Latina", "turmas": [{ "turma": "GR10014-00006", "diaSemana": "Terça", "horario": "19:30 às 22:23", "modalidade": "Presencial" }, { "turma": "GR10014-00008", "diaSemana": "Quarta", "horario": "08:30 às 11:23", "modalidade": "Presencial" }] }, { "id": 10357, "desc": "010357 - Povos Indígenas na América Latina Contemporânea", "turmas": [{ "turma": "GR10014-00009", "diaSemana": "TerçaTerca", "horario": "08:30 às 11:2308:30 às 11:23", "modalidade": "EaDPresencial" }, { "turma": "GR10014-00007", "diaSemana": "QuartaQuarta", "horario": "14:00 às 16:5314:00 às 16:53", "modalidade": "EaDPresencial" }, { "turma": "GR10014-00010", "diaSemana": "Quarta", "horario": "19:30 às 22:23", "modalidade": "Presencial" }] }]
+		};
+
+		const curriculoCol = data.curriculo.reduce((col, item) => {
+			col[item.id] = Object.assign({ turmas: [] }, item);
+			return col;
+		}, {});
+
+		const combined = data.ofertas.reduce((col, item) => {
+			col[item.id] = Object.assign({ turmas: [] }, col[item.id] || {}, item);
+			return col;
+		}, curriculoCol);
+
+
+
+		data = Object.values(combined);
+
+		// // Validar pré-requisitos
+		// data = data.filter(function (a) {
+
+		// 	if (!a.prereq || a.prereq.length === 0) {
+		// 		return true;
+		// 	};
+
+		// 	var prereqValid = true;
+		// 	for (var i = 0; i < a.prereq.length; i++) {
+		// 		var req = findSecond(a.prereq[i], data);
+		// 		if (!req || !req.done) {
+		// 			prereqValid = false;
+		// 			break;
+		// 		}
+		// 	};
+		// 	return prereqValid;
+		// });
+
+
+		// // remover cadeiras que possuem correquisitos (cujos prérequisitos não satisfazem, {ja removido})
+		// data = data.filter(function (a) {
+
+		// 	if (!a.coreq || a.coreq.length === 0) {
+		// 		return true;
+		// 	};
+
+		// 	var prereqValid = true;
+		// 	for (var i = 0; i < a.coreq.length; i++) {
+		// 		var req = findSecond(a.coreq[i], data);
+		// 		if (!req) {
+		// 			prereqValid = false;
+		// 			break;
+		// 		}
+		// 	};
+		// 	return prereqValid;
+		// });
+
+
+
+		// remover cadeiras já realizadas
+		data = data.filter(function (a) {
+			return !a.done;
+		});
+
+		// data = data.map(function (a) {
+		// 	a.turmas = a.turmas.filter(function (b) {
+		// 		return b.modalidade == "EaD" || b.horario == '19:30 às 22:23';
+		// 	});
+		// 	return a;
+		// });
+
+		// remover cadeiras sem ofertas
+		data = data.filter(function (a) {
+			return a.turmas && a.turmas.length > 0;
+		});
+
+
+
+
+
+		// desenha 
+		var table = document.createElement('table');
+		table.setAttribute('class', "table table-striped");
+		var tbody = document.createElement('tbody');
+		table.appendChild(tbody);
+
+		data.map(function (a) {
+			var tr = document.createElement('tr');
+			tbody.appendChild(tr);
+			if (a.done) {
+				tr.setAttribute('class', 'success');
+			};
+
+			var td = document.createElement('td');
+			td.innerText = a.id;
+			tr.appendChild(td);
+
+			var td = document.createElement('td');
+			td.innerText = a.desc;
+			tr.appendChild(td);
+
+			// var td = document.createElement('td');
+			// td.innerText = a.turmas.map(function (c) {
+			// 	return c.diaSemana;
+			// });
+			// tr.appendChild(td);
+		});
+		document.getElementsByTagName('body')[0].appendChild(table);
+
+
+		var tabelaDias = data.reverse();
+		// var tabelaDias = data.map(function(a){
+		// 	return a.turmas.map(function(b){
+		// 		return {cadeira:a,turma:b};
+		// 	});
+		// })
+		// .reduce(function(previousValue, currentValue, index, array){
+		//   	return previousValue.concat(currentValue);
+		// });
+
+		function toGroupedObj(list, prop) {
+			var obj = {};
+			for (var i = 0; i < list.length; i++) {
+				var arr = obj[prop(list[i])];
+				if (!arr) {
+					arr = obj[prop(list[i])] = [];
+				};
+				arr.push(list[i]);
+			};
+			return obj;
+		}
+
+		//tabelaDias = toGroupedObj(tabelaDias,function(a){return a.turma.diaSemana;});
+
+
+		// for (var a in tabelaDias){
+		// 	tabelaDias[a].length
+		// }
+
+
+		// desenha 
+		var table = document.createElement('table');
+		table.setAttribute('class', "table table-striped table-bordered");
+		document.getElementsByTagName('body')[0].appendChild(table);
+
+		var thead = document.createElement('thead');
+		table.appendChild(thead);
+		var tr = document.createElement('tr');
+		thead.appendChild(tr);
+
+		var dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+
+		var tbody = document.createElement('tbody');
+		table.appendChild(tbody);
+
+
+		for (var i = 0; i < dias.length; i++) {
+			var td = document.createElement('td');
+			td.innerText = dias[i];
+			tr.appendChild(td);
+		};
+
+		for (var i = 0; i < tabelaDias.length; i++) {
+			var tr = document.createElement('tr');
+			tbody.appendChild(tr);
+
+			var agrupado = toGroupedObj(tabelaDias[i].turmas, function (a) { return a.diaSemana; })
+
+			for (var j = 0; j < dias.length; j++) {
+				var td = document.createElement('td');
+
+				if (agrupado[dias[j]]) {
+					var text = agrupado[dias[j]].map(function (a) {
+						return '* ' + a.turma + ' (' + a.modalidade + ') - ' + a.horario;
+					}).join('\r\n');
+					if (text) {
+						td.innerText = tabelaDias[i].desc + ' (' + tabelaDias[i].sem + ' semestre) ' + '\r\n' + text;
+					};
+				};
+
+				// if (tabelaDias[i].turma.diaSemana == dias[j]) {
+				// 	td.innerText = tabelaDias[i].cadeira.desc + ' - ' + tabelaDias[i].turma.turma + ' (' + tabelaDias[i].turma.modalidade + ') - ' +  tabelaDias[i].turma.horario
+				// 	+ ' - ' +tabelaDias[i].turma.diaSemana;
+				// };
+				tr.appendChild(td);
+			};
+
+		};
+
+
+	</script>
+</body>
+
+
+
+</html>
